@@ -1,8 +1,8 @@
 <!--
     File content:
         Review of PHP basics
-        Work with functions
-        Work with dates
+        Work with functions basics
+        Work with dates basics
 -->
 <?php
     /*
