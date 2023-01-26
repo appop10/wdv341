@@ -79,23 +79,19 @@
                 $stringLength = strlen($trimString);
                 $lowercaseString = strtolower($inString);
                 $containsDMACC = strpos($lowercaseString, "dmacc");
-                $isTrue = "False";
-
-                // if statement to check the result of strpos()
-                // I want to make the result show up as true or false for better readability
-                if ($containsDMACC != "") {
-                    $isTrue = "True";
-                }
 
                 // display results
                 echo "<br>"."Number of characters: $stringLength";
                 echo "<br>"."String in all lowercase: $lowercaseString";
-                echo "<br>"."String contains DMACC: $isTrue";
+                echo "<br>"."String contains DMACC: $containsDMACC";
             }
 
-            echo modifyString("DMACC says hello!");
+            echo modifyString("hello DMACC!");
+            echo "<br>";
+            echo modifyString("Hello World!!");
 
         ?>
+        <br><br>* Will return a number if the String contains DMACC
     </p>
     <p><strong>Function 4:</strong> <?php echo formatPhoneNumber("1234567890"); ?></p>
     <p><strong>Function 5:</strong> <?php echo formatCurrency("1234.56"); ?></p>
