@@ -54,6 +54,9 @@
         <?php 
             $deliveryDate = date_create("2023-01-20");
             echo date_format($deliveryDate, "l n/d/Y"); 
+
+            // shorter version 
+            echo date_format(date_create("2023-01-20"), "l n/d/Y");
         ?>
     </p>
 

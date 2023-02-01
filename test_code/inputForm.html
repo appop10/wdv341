@@ -1,0 +1,42 @@
+<!--
+    The form is connected to test_code_3.php file
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+<body>
+    <h1>WDV 341 - Intro to PHP</h1>
+    <h2>Test Code 3 HTML Form</h2>
+
+    <!-- 
+        quick and easy way for form handling, but doesn't communicate back to the client after submission
+    -->
+
+    <form method="post" action="test_code_3.php"><!-- action attibute tells the browser where to send the request-->
+        <p><!-- stacked format -->
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName">
+        </p>
+        <p><!-- wrapped format -->
+            <label>Last Name
+                <input type="text" name="lastName" id="lastName">
+            </label>
+        </p>
+
+        <!-- buttons -->
+        <!-- 
+            they have pre-set funcitonality
+        -->
+        <p>
+            <input type="submit" name="submit" id="submit">
+            <input type="reset">
+        </p>
+    </form>
+</body>
+</html>
