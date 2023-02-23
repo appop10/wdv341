@@ -1,0 +1,99 @@
+/*
+    Mixin stylesheet for Unit 3 Extra Credit Assignment
+    Author: Abby Poplawski
+    Created: 2/12/2023
+*/
+// SCSS rules
+$primary-color: #66cbf8;
+$accent-1: #202A25;
+$accent-2: #ffffff;
+$accent-3: #AA4465;
+
+@mixin pagination {
+    a {
+        text-decoration: none;
+        color: $accent-1;
+    }
+    a:hover {
+        color: $accent-3;
+    }
+}
+
+@mixin textarea-dimensions {
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 0;
+}
+
+@mixin buttons {
+    a {
+        text-decoration: none;
+        border: 3px solid $accent-1;
+        border-radius: 5px;
+        background-color: $accent-2;
+        padding: 15px 35px;
+        font-size: 1.3em;
+        color: $accent-3;
+    }
+    a:hover {
+        background-color: $accent-1;
+    }
+}
+@mixin form_settings {
+    font-size: 1.3em;
+    margin: 5px;
+}
+// form rules
+form {
+    width: 35%;
+    margin: 75px auto;
+    padding: 75px;
+    border: 1px solid $accent-1;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px $accent-1;
+
+    legend {
+        color: $accent-3;
+        font-size: 2.3em;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    label {
+        @include form_settings();
+        color: $accent-1;
+    }
+    input, select {
+        @include form_settings();
+        padding: 5px;
+        margin-bottom: 25px;
+    }
+    textarea {
+        @include form_settings();
+        font-size: 1.5em;
+        resize: none;
+        margin-bottom: 45px;
+    }
+    p {
+        font-size: 1.3em;
+        margin: 10px;
+        line-height: 1.5em;
+    }
+    input[type^="submit"], input[type^="reset"] {
+        background-color: $primary-color;
+        background-image: linear-gradient(#202a250c,#202a2572);
+        color: $accent-2;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 15px;
+        width: 80%;
+        align-self: center;
+        font-size: 1.5em;
+        text-shadow: 0px 0px 3px $accent-1;
+    }
+    input[type^="submit"]:hover, input[type^="reset"]:hover {
+        background-color: $accent-3;
+    }
+}

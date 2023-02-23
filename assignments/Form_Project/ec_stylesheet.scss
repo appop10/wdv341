@@ -1,0 +1,190 @@
+/*
+    Main stylesheet for Unit 3 Extra Credit Assignment
+    Author: Abby Poplawski
+    Created: 2/12/2023
+*/
+// SCSS rules
+$primary-color: #66cbf8;
+$dark-primary: #aa44644d;
+$accent-1: #202A25;
+$accent-2: #ffffff;
+$accent-3: #AA4465;
+$main-font: 'Varela Round', tahoma, arial, sans-serif;
+
+@use "mix_stylesheet.scss";
+
+// CSS rules
+body {
+    margin: 0;
+    font-family: $main-font;
+}
+// header rules
+header {
+    display: flex;
+    flex-direction: column;
+    background-image: 
+        linear-gradient(#dfdfdf31,#66ccf891),
+        url(images/mountains_banner.jpg);
+    background-repeat: none;
+    background-size: cover;
+}
+header {
+    div {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
+    ul {
+        margin: 0;
+        list-style: none;
+    }
+    li {
+        display: inline;
+    }
+    @include mix_stylesheet.pagination;
+    a {
+        font-size: 1.25em;
+        margin: 0px 5px 15px 20px;
+    }
+    h1 {
+        margin: 75px 50px 45px 50px;
+        font-size: 4.5em;
+        text-align: center;
+        color: $accent-2;
+        text-shadow: 0px 0px 5px $accent-1;
+    }
+}
+// section rules
+.white-background {
+    @include mix_stylesheet.textarea-dimensions;
+}
+.white-background {
+    h1 {
+        color: $accent-3;
+        font-size: 2.3em;
+    }
+    p {
+        font-size: 1.3em;
+    }
+}
+.dark-background {
+    background-color: $accent-1;
+    display: flex;
+    justify-content: center;
+    padding: 45px;
+}
+.dark-background {
+    div {
+        width: 30%;
+        background-color: $primary-color;
+        padding: 30px 30px 60px 30px;
+        margin: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    h3 {
+        font-size: 1.75em;
+        margin: 0 0 25px 0;
+        padding: 25px 0;
+    }
+    @include mix_stylesheet.buttons;
+}
+.dog-gallery {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.dog-gallery {
+    div {
+        margin: 10px 10px 25px 10px;
+    }
+}
+// button section rules
+.button-section {
+    background-color: $accent-1;
+    display: flex;
+    justify-content: center;
+    padding: 45px;
+}
+.button-section {
+    div {
+        width: 80%;
+        background-color: $primary-color;
+        margin: 0 auto;
+        padding-bottom: 30px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    h3 {
+        font-size: 1.75em;
+        margin: 0 0 25px 0;
+        padding: 25px 0;
+    }
+}
+// button rules
+a.button-basic {
+    text-decoration: none;
+    font-size: 1.5em;
+    border: 1px solid $accent-1;
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin: 0 25px;
+}
+a.button-basic:hover {
+    color: $primary-color;
+    background-color: $accent-2;
+}
+a.button-dark {
+    @extend .button-basic;
+    color: $accent-2;
+    background-color: $accent-1;
+}
+a.button-pink {
+    @extend .button-basic;
+    color: $accent-1;
+    background-color: $accent-3;
+}
+// footer rules
+footer {
+    background-color: $dark-primary;
+    display: flex;
+    padding: 30px;
+    justify-content: space-evenly;
+}
+footer {
+    section {
+        padding: 20px 30px;
+    }
+    h3 {
+        font-size: 1.36em;
+    }
+    ul {
+        margin: 0;
+        list-style: none;
+        padding-inline-start: 0;
+    }
+    p, li {
+        font-size: 1.2em;
+    }
+    @include mix_stylesheet.pagination;
+    a {
+        font-size: 1.1em;
+    }
+}
+.office-hours {
+    column-count: 2;
+    column-gap: 0;
+}
+.office-hours {
+    h3 {
+        column-span: all;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+}
+.copyright {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
