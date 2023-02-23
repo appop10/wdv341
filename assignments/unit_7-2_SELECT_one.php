@@ -1,5 +1,6 @@
 <?php
     $readyStmt = true;
+    $recordId = 3;
 
     // connect to the database and pull the necessary data
     require "../databases/dbConnect.php";
@@ -9,9 +10,11 @@
     try {
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT name, description, presenter, date, time FROM wdv341_events";
+        $sql = "SELECT name, description, presenter, date, time FROM wdv341_events WHERE id= :recordId";
 
         $stmt = $conn->prepare("$sql");
+        $stmt->bindParam(':recordId', $recordId);
+
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
@@ -25,9 +28,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unit 7 Assignment 1 Create selectEvents file">
+    <meta name="description" content="Unit 7 Assignment 2 select one event from a table">
     <meta name="author" content="Abby Poplawski">
-    <title>Assignment 7-1</title>
+    <title>Assignment 7-2</title>
     <style>
         body {
             background-color: lightgrey;
