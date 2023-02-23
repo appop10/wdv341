@@ -3,15 +3,15 @@
 
     // connect to the database and pull the necessary data
     include "../databases/dbConnect.php";
-    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-    $sql = "SELECT name, description, presenter, date, time FROM wdv341_events";
-
-    $stmt = $conn->prepare("$sql");
     
     // if data can't be found, it won't break the code
         // error message will appear in the body
     try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+        $sql = "SELECT name, description, presenter, date, time FROM wdv341_events";
+
+        $stmt = $conn->prepare("$sql");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
