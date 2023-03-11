@@ -1,7 +1,7 @@
 <?php
 
     try {
-        require "../../databases/formatProductsDbConnect.php";
+        require "../../databases/dbConnect.php";
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT * FROM wdv341_products ORDER BY product_name DESC";
