@@ -1,13 +1,22 @@
 <?php
 
-	$firstName = $_POST['first_name'];
-	$lastName = $_POST['last_name'];
-	$academicStanding = $_POST['academic_standing'];
-	$selectedMajor = $_POST['major'];
-	$emailAddress = $_POST['email'];
-	$checkbox1;
-	$checkbox2;
-	$commentSection = $_POST['comments'];
+	if (isset($_POST['button'])) {
+		if (empty($_POST['phone_number']) && empty($_POST['grad_year'])) {
+			$firstName = $_POST['first_name'];
+			$lastName = $_POST['last_name'];
+			$academicStanding = $_POST['academic_standing'];
+			$selectedMajor = $_POST['major'];
+			$emailAddress = $_POST['email'];
+			$checkbox1;
+			$checkbox2;
+			$commentSection = $_POST['comments'];
+		} else {
+			exit("No information found");
+		}
+	} else {
+		echo "Form not submitted <br>";
+		exit("No confirmation can be sent");
+	}
 
 	// displays one or both of the checkbox values
 	function confirmCheck() {
@@ -15,12 +24,12 @@
 
 		if (!empty($_POST['contact_me'])) {
 			$checkbox1 = $_POST['contact_me'];
-			echo "<br>".$checkbox1;
+			echo "<li>".$checkbox1."</li>";
 		}
 
 		if (!empty($_POST['contact_advisor'])) {
 			$checkbox2 =  $_POST['contact_advisor'];
-			echo "<br>".$checkbox2;
+			echo "<li>".$checkbox2."</li>";
 		}
 	}
 
@@ -41,22 +50,19 @@
 		<h2>Unit 5 HTML Form Processor</h2>
 
 		<div class="confirmation">
-			<h3>Thank you for your submission!</h3>
-
-			<p>Dear <strong><?php echo $firstName ?></strong>,</p>
-
-			<p>Thank you for your interest in DMACC.</p>
+			<h3>Thank you <?php echo $firstName." ".$lastName ?></h3>
 
 			<p>We have you listed as a <strong><?php echo $academicStanding ?></strong> starting this fall.</p>
 
 			<p>You have declared <strong><?php echo $selectedMajor ?></strong> as you major.</p>
 
-			<p>Based upon your responses we will provide the following information in our confirmation email to you at <strong><?php echo $emailAddress ?></strong>.</p>
+			<p>You selected the following option(s):</p>
+			<ul><?php confirmCheck() ?></ul>
 
-			<p><strong><?php confirmCheck() ?></strong></p><br>
+			<p>You have shared these comments:</p>
+			<ul><?php echo "<li>".$commentSection."</li>" ?></ul>
 
-			<p>You have shared the following comments, which we will review:</p>
-			<p><?php echo $commentSection ?></p>
+			<p>A signup confirmation has been sent to  <strong><?php echo $emailAddress ?></strong>. Thank you for your support!</p>
 		</div><!-- close confirmation div -->
 	</div><!-- close container div -->
 </body>

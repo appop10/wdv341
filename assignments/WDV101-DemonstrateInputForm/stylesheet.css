@@ -40,7 +40,13 @@ form legend	{
     margin-bottom: 20px;
     border-radius: 3px;
 }
-.radio_buttons, .checkboxes {
+.form_section_1 p input[id|="phone_number"], .form_section_1 p label[for|="phone_number"] {
+    display: none;
+}
+form section.graduation_year {
+    display: none;
+}
+.school_grade, .checkboxes {
     padding-bottom: 30px;
 }
 
@@ -56,6 +62,9 @@ input[name^="button"] {
 input[name^="button"]:hover {
     color: white;
     background-color: darkgrey;
+}
+input[name^="send"] {
+    display: none;
 }
 
 /* confirmation area rules */

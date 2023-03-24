@@ -40,13 +40,22 @@
           </select>
         </p>
   
+        <!-- email and phone number -->
         <p>
           <label for="email">Email:</label>
           <input type="email" name="email" id="email">
+
+          <label for="phone_number">Phone Number:</label>
+          <input type="text" name="phone_number" id="phone_number">
         </p>
       </section><!-- close form_section_1 -->
+
+      <section class="graduation_year">
+        <label for="grad_year">Graduation Year:</label>
+        <input type="text" name="grad_year" id="grad_year">
+      </section><!-- close graduation_year -->
       
-      <section class="radio_buttons">
+      <section class="school_grade">
         <!-- radio buttons -->
         <p>Current Academic Standing:</p>
         <input type="radio" name="academic_standing" id="high_schooler" value="high schooler">
@@ -57,7 +66,7 @@
         
         <input type="radio" name="academic_standing" id="sophomore" value="sophomore">
         <label for="sophomore">Sophomore</label>
-      </section><!-- close radio_buttons -->
+      </section><!-- close school_grade -->
 
       <section class="checkboxes">
         <!-- checkboxes -->
@@ -82,6 +91,7 @@
       <!-- form buttons -->
       <p>
         <input type="submit" name="button" id="button" value="Submit" />
+        <input type="submit" name="send" id="send" value="Submit">
         <input type="reset" name="button_2" id="button2" value="Reset" />
       </p>
       
