@@ -1,12 +1,30 @@
 <?php
 
-    // variables
-    $contactDate = date_create();
-    $formatContactDate = date_format($contactDate, "D, m-d-Y");
-    $contactName = $_POST["contactName"];
-    $contactEmail = $_POST["contactEmail"];
-    $contactReason = $_POST["contactReason"];
-    $comments = $_POST["comments"];
+    try {
+        require_once('recaptchalib.php');
+        $privatekey = "your_private_key";
+        $resp = recaptcha_check_answer($privatekey,
+                                    $_SERVER["REMOTE_ADDR"],
+                                    $_POST["recaptcha_challenge_field"],
+                                    $_POST["recaptcha_response_field"]);
+    
+        if (!$resp->is_valid) {
+            // incorrect verification
+            die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
+                "(reCAPTCHA said: " . $resp->error . ")");
+        } else {
+            // successful verification
+            // variables
+                $contactDate = date_create();
+                $formatContactDate = date_format($contactDate, "D, m-d-Y");
+                $contactName = $_POST["contactName"];
+                $contactEmail = $_POST["contactEmail"];
+                $contactReason = $_POST["contactReason"];
+                $comments = $_POST["comments"];
+        }
+    } catch (exception $e) {
+        echo "Couldn't find file";
+    }
 
 ?>
 <!DOCTYPE html>

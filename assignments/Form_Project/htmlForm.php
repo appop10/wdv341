@@ -1,3 +1,14 @@
+<?php
+
+    $token = "";
+    try {
+        require_once('recaptchalib.php');
+        $publickey = "6Lf5ZkElAAAAAAwTS0vYoFA8_oHc-00K7y94Cv-z";
+        $token = recaptcha_get_html($publickey);
+    } catch (exception $e) {
+        echo "Couldn't find the file";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +70,11 @@
         <!-- comments -->
         <label for="comments">Comments: </label>
         <textarea name="comments" id="comments" maxlength="250" placeholder="Max 250 characters" rows="5" cols="35"></textarea>
+
+        <!-- reCAPTCHA -->
+        <?php
+          echo $token;
+        ?>
 
         <!-- buttons -->
         <input type="submit" name="submit" id="submit" value="Send">
