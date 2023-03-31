@@ -1,14 +1,3 @@
-<?php
-
-    $token = "";
-    try {
-        require_once('recaptchalib.php');
-        $publickey = "6Lf5ZkElAAAAAAwTS0vYoFA8_oHc-00K7y94Cv-z";
-        $token = recaptcha_get_html($publickey);
-    } catch (exception $e) {
-        echo "Couldn't find the file";
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <!-- recaptcha scripts -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <header>
@@ -72,9 +64,7 @@
         <textarea name="comments" id="comments" maxlength="250" placeholder="Max 250 characters" rows="5" cols="35"></textarea>
 
         <!-- reCAPTCHA -->
-        <?php
-          echo $token;
-        ?>
+        <div class="g-recaptcha" data-sitekey="6LeQ7kAlAAAAAJmm-Ce4gyl3xBHjLtv2Bl80fq60"></div>
 
         <!-- buttons -->
         <input type="submit" name="submit" id="submit" value="Send">
