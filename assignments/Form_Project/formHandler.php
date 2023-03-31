@@ -1,12 +1,46 @@
 <?php
 
-    // variables
-    $contactDate = date_create();
-    $formatContactDate = date_format($contactDate, "D, m-d-Y");
-    $contactName = $_POST["contactName"];
-    $contactEmail = $_POST["contactEmail"];
-    $contactReason = $_POST["contactReason"];
-    $comments = $_POST["comments"];
+    $confirmationMessage = "";
+
+    if (isset($_POST["submit"])) {
+        // variables
+        $contactDate = date_create();
+        $formatContactDate = date_format($contactDate, "D, m-d-Y");
+        $contactName = $_POST["contactName"];
+        $contactEmail = $_POST["contactEmail"];
+        $contactReason = $_POST["contactReason"];
+        $comments = $_POST["comments"];
+
+        // captcha variables
+        $recaptcha = $_POST["g-recaptcha-response"];
+        $privateKey = "6Lcd80AlAAAAACVc2co-dPTcYwQ35l7VG9KzfXj_";
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $privateKey . '&response=' . $recaptcha;
+        $response = file_get_contents($url);
+
+        // convert Google's JSON response
+        $response = json_decode($response);
+
+        if ($response->success == true) {
+            // // email variables
+            // $to = "$contactEmail, appoplawski10@gmail.com";
+            // $subject = "Confirmation Email";
+            // $message = "Hello $contactName,\n\nYou contacted us and provided the following information:\n\n Contact Date: $formatContactDate\n Contact Name: $contactName\n Contact Email: $contactEmail\n Contact Reason: $contactReason\n Comments: $comments\n\n Thank you for your message, \nThe Summit Farms Rescue Team"
+            // $message = wordwrap($message, 70);
+
+            // // send email
+            // $confirm = mail($to, $subject, $message);
+
+            // if ($confirm == true) {
+            //     echo "<legend>Message Sent!</legend>"
+            // } else {
+            //     echo "<legend>Please confirm</legend>"
+            // }
+
+            $confirmationMessage = "Hello $contactName,<br><br>You contacted us and provided the following information:<br><br> Contact Date: $formatContactDate<br> Contact Name: $contactName<br> Contact Email: $contactEmail<br> Contact Reason: $contactReason<br> Comments: $comments<br><br>Thank you for your message,<br>The Summit Farms Rescue Team";
+        } else {
+            die("reCaptcha failed, stopping program");
+        }
+    }   
 
 ?>
 <!DOCTYPE html>
@@ -46,26 +80,9 @@
     </header><!-- close header -->
 
     <form>
-        <?php
 
-            // // email variables
-            // $to = "$contactEmail, appoplawski10@gmail.com";
-            // $subject = "Confirmation Email";
-            // $message = "Hello $contactName,\n\nYou contacted us and provided the following information:\n\n Contact Date: $formatContactDate\n Contact Name: $contactName\n Contact Email: $contactEmail\n Contact Reason: $contactReason\n Comments: $comments\n\n Thank you for your message, \nThe Summit Farms Rescue Team"
-            // $message = wordwrap($message, 70);
+        <p><?php echo  $confirmationMessage; ?></p>
 
-            // // send email
-            // $confirm = mail($to, $subject, $message);
-
-            // if ($confirm == true) {
-            //     echo "<legend>Message Sent!</legend>"
-            // } else {
-            //     echo "<legend>Please confirm</legend>"
-            // }
-
-        ?>
-
-        <p><?php echo "Hello $contactName,<br><br>You contacted us and provided the following information:<br><br> Contact Date: $formatContactDate<br> Contact Name: $contactName<br> Contact Email: $contactEmail<br> Contact Reason: $contactReason<br> Comments: $comments<br><br>Thank you for your message,<br>The Summit Farms Rescue Team" ?></p>
     </form><!-- close form -->
 
     <footer>
