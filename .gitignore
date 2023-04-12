@@ -1,3 +1,8 @@
-databases/
+## File Types ##
 *.scss
+
+
+## Folders ##
 test_code/
+databases/
+pribs_minis/
