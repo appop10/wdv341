@@ -13,7 +13,7 @@
 
         // captcha variables
         $recaptcha = $_POST["g-recaptcha-response"];
-        $privateKey = "6Lcd80AlAAAAACVc2co-dPTcYwQ35l7VG9KzfXj_";
+        $privateKey = "its_a_secret";
         $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $privateKey . '&response=' . $recaptcha;
         $response = file_get_contents($url);
 
