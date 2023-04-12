@@ -1,6 +1,6 @@
 ## File Types ##
 *.scss
-
+*.css.map
 
 ## Folders ##
 test_code/
