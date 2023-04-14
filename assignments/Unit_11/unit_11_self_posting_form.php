@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     // flag/switch variable - tells whether or not you requested the form
     $formRequested = true;
     $readyStmt = true;
@@ -30,6 +32,13 @@
 
         return $tally;
     }
+
+    // if invalid user return to loginPage.php
+    if(!(isset($_SESSION['validUser']))) {
+        header("Location: loginPage.php");
+        exit();
+    }
+
     // process the form if submitted
     if (isset($_POST['submit'])) {
         // process the form data into the database
@@ -94,18 +103,32 @@
     <title>Self Posting Form</title>
 
     <!-- stylesheets -->
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="stylesheets/enter-event-page.css">
 </head>
 <body>
-    <div class="container">
-    <h1>WDV341 Intro to PHP</h1>
-    <h2>Self Posting Form - Event Input</h2>
+    <nav>
+        <p><a href="loginPage.php">Admin Area</a></p>
 
+        <ul>
+            <li><a href="unit_11_self_posting_form.php" class="active">New events</a></li>
+            <li><a>New users</a></li>
+            <li><a href="../unit_7-1_SELECT_table.php">Display Events</a></li>
+            <li><a href="logoutPage.php">Sign out</a></li>
+        </ul>
+    </nav>
+
+    <main>
 <?php
     if ($formRequested) {
         // form was requested
         // display form
 ?>
+    
+    <header>
+        <h1>WDV341 Intro to PHP</h1>
+        <h2>Self Posting Form - Event Input</h2>
+    </header>
+
     <form method="post" action="unit_11_self_posting_form.php">
         <h3>Event Input Form</h3>
 
@@ -166,12 +189,14 @@
     } else {
         // dipslay cofirmation
 ?>
-    <h3><?php echo $errMsg; ?></h3>
-    <h3>Thank You!</h3>
-    <p>Your event has been added to the database. Please check your new event in the Display Events process.</p>
+    <div class="container">
+        <h3><?php echo $errMsg; ?></h3>
+        <h3>Thank You!</h3>
+        <p>Your event has been added to the database. Please check your new event on the Display Events page.</p>
+    </div>
 <?php
     }
 ?>
-    </div><!-- close container div -->
+    </main><!-- close main -->
 </body>
 </html>
