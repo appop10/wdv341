@@ -67,9 +67,8 @@
         <p><a href="loginPage.php">Admin Area</a></p>
 
         <ul>
-            <li><a href="unit_11_self_posting_form.php">New events</a></li>
-            <li><a>New users</a></li>
-            <li><a href="../unit_7-1_SELECT_table.php">Display Events</a></li>
+            <li><a href="unit_11_self_posting_form.php">New Event</a></li>
+            <li><a href="displayEvents.php">Display Events</a></li>
             <li><a href="logoutPage.php">Sign out</a></li>
         </ul>
     </nav>

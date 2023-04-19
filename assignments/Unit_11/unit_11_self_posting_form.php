@@ -100,7 +100,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Self Posting Form</title>
+    <title>New Event</title>
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="stylesheets/enter-event-page.css">
@@ -110,9 +110,8 @@
         <p><a href="loginPage.php">Admin Area</a></p>
 
         <ul>
-            <li><a href="unit_11_self_posting_form.php" class="active">New events</a></li>
-            <li><a>New users</a></li>
-            <li><a href="../unit_7-1_SELECT_table.php">Display Events</a></li>
+            <li><a href="unit_11_self_posting_form.php">New Event</a></li>
+            <li><a href="displayEvents.php">Display Events</a></li>
             <li><a href="logoutPage.php">Sign out</a></li>
         </ul>
     </nav>
