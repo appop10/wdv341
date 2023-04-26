@@ -68,7 +68,7 @@
                     <td><?php echo $row["presenter"]; ?></td>
                     <td><?php echo $row["date"]; ?></td>
                     <td><?php echo $row["time"]; ?></td>
-                    <td><a href="#"><button>Edit</button></a></td>
+                    <td><a href="editEvent.php?eventID=<?php echo $row["id"]; ?>"><button>Edit</button></a></td>
                     <td><a href="deleteEvent.php?eventID=<?php echo $row["id"]; ?>"><button>Delete</button></a></td>
                 </tr>
             <?php
