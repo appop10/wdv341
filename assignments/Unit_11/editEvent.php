@@ -1,10 +1,55 @@
 <?php
 
     if (isset($_POST['submit'])) {
-        // do database stuff
-        echo "form submitted";
-    } else {
+        $eventID = $_GET['eventID'];
+        $eventName = $_POST['eventName'];
+        $eventDescription = $_POST['eventDescription'];
+        $eventPresenter = $_POST['eventPresenter'];
+        $eventDate = $_POST['eventDate'];
+        $eventTime = $_POST['eventTime'];
 
+        try {
+            require "../../databases/dbConnect.php";
+            $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $sql = "UPDATE wdv341_events SET name=:eventName, description=:eventDescription, presenter=:eventPresenter, date=:eventDate, time=:eventTime WHERE id=:eventID";
+
+            $stmt = $conn->prepare("$sql");
+            $stmt->bindParam(':eventID', $eventID);
+            $stmt->bindParam(':eventName', $eventName);
+            $stmt->bindParam(':eventDescription', $eventDescription);
+            $stmt->bindParam(':eventPresenter', $eventPresenter);
+            $stmt->bindParam(':eventDate', $eventDate);
+            $stmt->bindParam(':eventTime', $eventTime);
+            $stmt->bindParam(':dateInserted', $dateInserted);
+            $stmt->bindParam(':dateUpdated', $dateInserted);
+
+            $stmt->execute();
+            
+            header("Location: displayEvents.php");
+        } catch(PDOException $e) {
+            
+        }
+
+    } else {
+        $eventID = $_GET['eventID'];
+
+        try {
+            require "../../databases/dbConnect.php";
+            $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    
+            $sql = "SELECT name, description, presenter, date, time FROM wdv341_events WHERE id=:eventID";
+    
+            $stmt = $conn->prepare("$sql");
+            $stmt->bindParam(':eventID', $eventID);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            $row = $stmt->fetch();
+    
+        } catch(PDOException $e) {
+            
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,32 +79,32 @@
             <h2>Self Posting Form - Event Update</h2>
         </header>
 
-        <form method="post" action="editEvent.php">
+        <form method="post" action="editEvent.php?eventID=<?php echo $eventID; ?>">
             <h3>Update Event</h3>
 
             <p>
                 <label for="eventName">Event Name:</label>
-                <input type="text" name="eventName" id="eventName">
+                <input type="text" name="eventName" id="eventName" value="<?php echo $row['name']; ?>">
             </p>
 
             <p>
                 <label for="eventDescription">Event Description:</label>
-                <input type="text" name="eventDescription" id="eventDescription">
+                <input type="text" name="eventDescription" id="eventDescription" value="<?php echo $row['description']; ?>">
             </p>
 
             <p>
                 <label for="eventPresenter">Event Presenter:</label>
-                <input type="text" name="eventPresenter" id="eventPresenter">
+                <input type="text" name="eventPresenter" id="eventPresenter" value="<?php echo $row['presenter']; ?>">
             </p>
 
             <p>
                 <label for="eventDate">Event Date:</label>
-                <input type="date" name="eventDate" id="eventDate">
+                <input type="date" name="eventDate" id="eventDate" value="<?php echo $row['date']; ?>">
             </p>
 
             <p>
                 <label for="eventTime">Event Time:</label>
-                <input type="time" name="eventTime" id="eventTime">
+                <input type="time" name="eventTime" id="eventTime" value="<?php echo $row['time']; ?>">
             </p>
 
             <div>
